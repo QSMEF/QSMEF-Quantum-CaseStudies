@@ -103,7 +103,7 @@ This modification is used to analyze how the functional contribution profile cha
 
 The experimental results and generated figures are available in:
 
-[`Resultados/`](Resultados/)
+[Experimental results and figures](./results/)
 
 The figures include:
 
