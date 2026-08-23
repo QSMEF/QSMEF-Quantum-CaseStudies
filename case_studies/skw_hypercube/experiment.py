@@ -20,9 +20,17 @@ with operational order:
 
 import numpy as np
 
-from QSMEF.coalitions import generate_coalitions
-from QSMEF.game import build_characteristic_function
-from QSMEF.shapley import compute_shapley_values
+from qsmef.coalitions import generate_coalitions
+from qsmef.game import build_characteristic_function
+from qsmef.shapley import compute_shapley_values
+
+from case_studies.skw_hypercube.visualization import (
+    print_shapley_table,
+    plot_shapley_profile,
+    print_oracle_comparison,
+    plot_oracle_comparison,
+)
+
 
 from .skw import (
     initial_state,
@@ -351,4 +359,31 @@ if __name__ == "__main__":
                 - modified_results["delta_E"]
             )
         )
+    )
+    print_shapley_table(
+        correct_results,
+        start=15,
+        end=23
+    )
+
+    plot_shapley_profile(
+        correct_results,
+        start=15,
+        end=23,
+        filename_prefix="case_studies/skw_hypercube/results/skw_correct"
+    )
+
+    print_oracle_comparison(
+        correct_results,
+        modified_results,
+        start=15,
+        end=23
+    )
+
+    plot_oracle_comparison(
+        correct_results,
+        modified_results,
+        start=15,
+        end=23,
+        filename_prefix="case_studies/skw_hypercube/results/skw_incorrect_oracle_phase"
     )

@@ -351,8 +351,7 @@ def plot_shapley_profile(
             f"Files saved: {png}, {pdf}"
         )
 
-    plt.show()
-
+  #  plt.show()
     plt.close(fig)
 
 
@@ -593,6 +592,6 @@ def plot_oracle_comparison(
             f"Files saved: {png}, {pdf}"
         )
 
-    plt.show()
+  #  plt.show()
 
     plt.close(fig)
