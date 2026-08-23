@@ -4,6 +4,14 @@ QSMEF is a methodological framework for evaluating the functional contribution o
 
 The framework analyzes how individual functional components contribute to a specific property of interest while preserving the structural and operational context of the analyzed implementation.
 
+
+## Citation and DOI
+
+The QSMEF Quantum Case Studies repository is archived in Zenodo.
+
+**Concept DOI:** https://doi.org/10.5281/zenodo.22071885
+
+This DOI represents all versions of the repository. For version-specific citations, please refer to the corresponding Zenodo record.
 ## Overview
 
 QSMEF combines:
