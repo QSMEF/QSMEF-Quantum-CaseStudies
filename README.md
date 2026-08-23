@@ -58,12 +58,26 @@ Detailed information about the case study, experimental configuration, and resul
 
 [`case_studies/skw_hypercube/`](case_studies/skw_hypercube/)
 
+
+### Shor Order-Finding Applicability Analysis
+
+A second case analyzes the applicability of QSMEF to the quantum order-finding stage of Shor's algorithm.
+
+Unlike the SKW case study, this example is **not presented as a valid application of QSMEF**. The analysis shows that the functional interdependence among the preparation stage, controlled modular operations, and inverse Quantum Fourier Transform prevents the coalition-induced configurations from preserving the common functional semantics required by QSMEF.
+
+This case is therefore included to document an **applicability boundary of the framework**.
+
+The corresponding circuit implementation and methodological rationale are available in:
+
+[`case_studies/shor_applicability/`](case_studies/shor_applicability/)
+
+
 ## Repository Structure
 
 ```text
 QSMEF-Quantum-CaseStudies/
 │
-├── QSMEF/
+├── qsmef/
 │   ├── __init__.py
 │   ├── coalitions.py
 │   ├── game.py
@@ -71,25 +85,41 @@ QSMEF-Quantum-CaseStudies/
 │   └── shapley.py
 │
 ├── case_studies/
-│   └── skw_hypercube/
-│       ├── Resultados/
-│       │   ├── README.md
-│       │   ├── skw_correct.png
-│       │   └── skw_incorrect_oracle_phase.png
+│   ├── skw_hypercube/
+│   │   ├── results/
+│   │   │   ├── skw_correct.png
+│   │   │   ├── skw_correct.pdf
+│   │   │   ├── skw_incorrect_oracle_phase.png
+│   │   │   └── skw_incorrect_oracle_phase.pdf
+│   │   ├── __init__.py
+│   │   ├── experiment.py
+│   │   ├── observables.py
+│   │   ├── skw.py
+│   │   ├── visualization.py
+│   │   └── README.md
+│   │
+│   └── shor_applicability/
 │       ├── __init__.py
-│       ├── experiment.py
-│       ├── observables.py
-│       ├── skw.py
-│       ├── visualization.py
+│       ├── shor_circuit.py
 │       └── README.md
 │
+├── literature_review/
+│   ├── data/
+│   │   ├── retrieved_studies.csv
+│   │   ├── excluded_studies.csv
+│   │   └── selected_studies_analysis.xlsm
+│   └── README.md
+│
+├── .gitignore
 ├── requirements.txt
 └── README.md
 ```
 
-The `QSMEF` package contains the reusable components of the framework, including coalition generation, characteristic-function construction, functional metric evaluation, and Shapley-value computation.
+The `qsmef` package contains the reusable components of the framework, including coalition generation, characteristic-function construction, functional metric evaluation, and Shapley-value computation.
 
-The `case_studies` directory contains concrete applications of QSMEF to quantum software implementations.
+The `case_studies` directory contains the SKW application case and the Shor order-finding applicability analysis.
+
+The `literature_review` directory contains the research artifacts used to support the literature review, including the retrieved studies, excluded studies, and the analysis of the selected studies.
 
 ## Requirements
 
@@ -98,6 +128,7 @@ The current implementation requires:
 - Python 3
 - NumPy
 - Matplotlib
+- Qiskit
 
 Install the required Python dependencies with:
 
@@ -118,8 +149,22 @@ The experiment evaluates the functional contribution of the Oracle, Grover coin,
 The generated results can be found in:
 
 ```text
-case_studies/skw_hypercube/Resultados/
+case_studies/skw_hypercube/results/
 ```
+## Running the Shor Applicability Example
+
+The Shor order-finding circuit can be constructed from the repository root with:
+
+```bash
+python -c "from case_studies.shor_applicability.shor_circuit import build_shor_order_finding_circuit; qc = build_shor_order_finding_circuit(); print(qc)"
+```
+
+This example is provided to support the applicability analysis of QSMEF. It does not compute QSMEF contributions or Shapley values.
+
+Further details are available in:
+
+[`case_studies/shor_applicability/`](case_studies/shor_applicability/)
+
 
 ## Interpretation
 
