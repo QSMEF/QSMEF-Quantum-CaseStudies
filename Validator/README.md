@@ -6,8 +6,11 @@ implementaciones cuánticas.
 
 ## Artefacto principal
 
-El notebook `QSMEF_Universal_Validator.ipynb` implementa una arquitectura
-modular compuesta por:
+El archivo `qsmef_universal_validator.py` contiene la implementación
+ejecutable del artefacto computacional desarrollado para operacionalizar
+la validación de aplicabilidad de QSMEF.
+
+La implementación presenta una arquitectura modular compuesta por:
 
 - constructores específicos de casos;
 - la estructura común `QSMEFCase`;
