@@ -1,95 +1,92 @@
-# Validador universal QSMEF
+# QSMEF Universal Validator
 
-Este directorio contiene el artefacto computacional desarrollado para
-operacionalizar la validación de aplicabilidad de QSMEF sobre diferentes
-implementaciones cuánticas.
+This directory contains the computational artifact developed to operationalize
+the applicability validation of QSMEF across different quantum software
+implementations.
 
-## Artefacto principal
+## Main Artifact
 
-El archivo `qsmef_universal_validator.py` contiene la implementación
-ejecutable del artefacto computacional desarrollado para operacionalizar
-la validación de aplicabilidad de QSMEF.
+The `qsmef_universal_validator.py` file contains the executable implementation
+of the computational artifact developed to operationalize the applicability
+validation of QSMEF.
 
-La implementación presenta una arquitectura modular compuesta por:
+The implementation follows a modular architecture composed of:
 
-- constructores específicos de casos;
-- la estructura común `QSMEFCase`;
-- el Validador universal;
-- el cálculo de contribuciones mediante valores de Shapley;
-- un orquestador multicaso;
-- un asistente opcional de granularidad.
+- case-specific constructors;
+- the common `QSMEFCase` structure;
+- the Universal Validator;
+- functional contribution computation using Shapley values;
+- a multi-case orchestrator;
+- an optional granularity assistant.
 
-## Arquitectura
+## Architecture
 
-Cada implementación cuántica se representa mediante un constructor específico
-que genera una instancia de `QSMEFCase`.
+Each quantum implementation is represented by a case-specific constructor
+that generates a `QSMEFCase` instance.
 
-La instancia contiene la información necesaria para realizar el análisis:
-estado inicial, operaciones, bloques funcionales, secuencia de ejecución,
-observable, restricciones funcionales y contrato semántico.
+The instance contains the information required for the analysis:
+initial state, operations, functional blocks, execution schedule,
+observable, functional constraints, and semantic contract.
 
-El Validador recibe exclusivamente una instancia de `QSMEFCase` y aplica el
-mismo procedimiento de validación independientemente del algoritmo analizado.
-La lógica específica de cada implementación se encuentra declarada en el
-constructor correspondiente y no en el Validador universal.
+The Validator receives exclusively a `QSMEFCase` instance and applies the
+same validation procedure independently of the quantum algorithm being
+analyzed. Implementation-specific logic is declared in the corresponding
+case constructor rather than encoded in the Universal Validator.
 
-De manera simplificada, el flujo es:
+In simplified form, the workflow is:
 
-`Constructor del caso → QSMEFCase → Validador universal → Informe de validación`
+`Case Constructor → QSMEFCase → Universal Validator → Validation Report`
 
-Cuando el caso resulta aplicable, el artefacto calcula las contribuciones
-funcionales de los bloques mediante el valor de Shapley.
+When a case is classified as applicable, the artifact computes the functional
+contributions of its blocks using Shapley values.
 
-## Resultados de validación
+## Validation Outcomes
 
-El Validador puede producir cuatro resultados:
+The Validator can produce four outcomes:
 
 - `ERROR EN LA ESPECIFICACIÓN`
 - `NO APLICABLE BAJO EL ALCANCE DECLARADO`
 - `REQUIERE CONTRATO SEMÁNTICO`
 - `APLICABLE`
 
-Los valores de Shapley se calculan únicamente cuando el resultado de la
-validación es `APLICABLE`.
+Shapley values are computed only when the validation outcome is `APLICABLE`.
 
-## Granularidad
+## Granularity
 
-La granularidad del análisis constituye una decisión metodológica del
-investigador y no es determinada automáticamente por QSMEF.
+The granularity of the analysis is a methodological decision made by the
+researcher and is not automatically determined by QSMEF.
 
-El notebook incluye un asistente de granularidad como herramienta auxiliar
-para explorar y comparar granularidades candidatas. Su utilización es
-opcional y no reemplaza la selección y justificación realizada por el
-investigador.
+The artifact includes an optional granularity assistant as a supporting tool
+for exploring and comparing candidate granularities. Its use is optional and
+does not replace the selection and justification made by the researcher.
 
-## Casos incluidos
+## Included Cases
 
-El notebook contiene constructores y permite ejecutar el procedimiento sobre
-seis implementaciones:
+The artifact contains constructors and supports the execution of the QSMEF
+procedure on six quantum implementations:
 
 - QAOA-MaxCut;
 - TwoLocal-H2;
-- SKW en el hipercubo;
-- QPE aplicado al procedimiento de búsqueda del orden de Shor;
-- clasificador cuántico;
-- particionamiento de grafos.
+- SKW quantum search on the hypercube;
+- QPE applied to the order-finding procedure of Shor's algorithm;
+- quantum classifier;
+- graph partitioning.
 
-Los cuatro primeros corresponden a los casos principales analizados en la
-tesis. Los dos restantes se incluyen como casos adicionales del artefacto.
+The first four correspond to the main cases analyzed in the thesis. The
+remaining two are included as additional cases of the computational artifact.
 
-## Ejecución
+## Execution
 
-El artefacto puede ejecutarse mediante:
+The artifact can be executed with:
 
-`python qsmef_universal_validator.py`
+```bash
+python qsmef_universal_validator.py
+```
 
-Por defecto, la ejecución utiliza las granularidades declaradas en los
-constructores de los casos. El asistente de granularidad permanece
-desactivado durante esta ejecución.
+By default, the execution uses the granularities declared in the case
+constructors. The optional granularity assistant remains disabled during
+this execution.
 
-El orquestador multicaso construye las instancias, invoca el mismo Validador
-universal para cada una y reúne los resultados obtenidos.
-desactivado durante esta ejecución.
-
-El orquestador multicaso construye las instancias, invoca el mismo Validador
-universal para cada una y reúne los resultados obtenidos.
+The multi-case orchestrator constructs the case instances, invokes the same
+Universal Validator for each one, and gathers the resulting validation
+reports.
