@@ -79,11 +79,16 @@ tesis. Los dos restantes se incluyen como casos adicionales del artefacto.
 
 ## Ejecución
 
-Para reproducir la ejecución multicaso, abrir
-`QSMEF_Universal_Validator.ipynb` y ejecutar las celdas en orden.
+El artefacto puede ejecutarse mediante:
+
+`python qsmef_universal_validator.py`
 
 Por defecto, la ejecución utiliza las granularidades declaradas en los
 constructores de los casos. El asistente de granularidad permanece
+desactivado durante esta ejecución.
+
+El orquestador multicaso construye las instancias, invoca el mismo Validador
+universal para cada una y reúne los resultados obtenidos.
 desactivado durante esta ejecución.
 
 El orquestador multicaso construye las instancias, invoca el mismo Validador
